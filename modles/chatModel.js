@@ -6,7 +6,7 @@ const chatModel = mongoose.Schema(
       type: String,
       trim: true,
     },
-    groupChat: {
+    isGroupChat: {
       type: Boolean,
       default: false,
     },
@@ -27,7 +27,7 @@ const chatModel = mongoose.Schema(
   { timestamps: true }
 );
 
-const Chat = mongoose.Model("Chat", chatModel)
+const Chat = mongoose.model("Chat", chatModel);
 
 module.exports = Chat;
 
