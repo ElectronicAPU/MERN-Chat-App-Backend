@@ -23,12 +23,23 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
-app.use('/api/chat', chatRoutes)
-app.use('/api/message', messageRoutes)
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server listening on port http://localhost:${PORT}`);
+});
+
+const io = require("socket.io")(server, {
+  pingTimeout: 60000,
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("Connected to socket.io");
 });

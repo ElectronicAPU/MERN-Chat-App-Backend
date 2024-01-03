@@ -7,7 +7,7 @@ const sendMessage = asyncHandler(async (req, res) => {
   const { content, chatId } = req.body;
 
   if (!content || !chatId) {
-    console.log("Imvaild data passed into request");
+    console.log("Invaild data passed into request");
     return res.status(404);
   }
   var newMessage = {
